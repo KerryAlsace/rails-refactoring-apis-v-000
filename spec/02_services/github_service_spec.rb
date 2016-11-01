@@ -49,7 +49,7 @@ describe 'GithubService' do
   describe '#get_repos' do
     before :each do
       @service = GithubService.new({"access_token" => "1"})
-      @repos_array = @service.get_repos
+      @repos_array = @service.get_repos("1")
     end
 
     it "sends the correct GET request" do
@@ -70,7 +70,7 @@ describe 'GithubService' do
         with(body: {"name":"a-new-repo"}.to_json, headers: {'Authorization'=>'token 1'})
 
       service = GithubService.new({"access_token" => "1"})
-      service.create_repo("a-new-repo")
+      service.create_repo("1", "a-new-repo")
 
       expect(stubbed).to have_been_requested
     end
